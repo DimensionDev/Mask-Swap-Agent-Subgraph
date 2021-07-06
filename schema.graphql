@@ -5,7 +5,6 @@ type Token @entity {
   name: String
   symbol: String
   decimals: Int!
-  chain_id: Int!
 }
 
 type Transaction @entity {

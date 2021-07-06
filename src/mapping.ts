@@ -1,6 +1,4 @@
-import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  SwapAgent,
   OwnershipTransferred,
   SwapFilled,
   SwapPairRegister,
@@ -8,6 +6,10 @@ import {
 } from "../generated/SwapAgent/SwapAgent"
 import { Transaction } from "../generated/schema"
 import { fetchToken } from "./helpers"
+
+export function handleOwnershipTransferred(event: OwnershipTransferred): void {}
+export function handleSwapFilled(event: SwapFilled): void {}
+export function handleSwapPairRegister(event: SwapPairRegister): void {}
 
 export function handleSwapStarted(event: SwapStarted): void {
   // create token

@@ -1,5 +1,5 @@
 import { Address } from '@graphprotocol/graph-ts'
-import { CHAIN_ID, TOKEN_TYPE_ETHER, TOKEN_TYPE_ERC20, ERC20, ERC20NameBytes, ERC20SymbolBytes } from './constants'
+import { TOKEN_TYPE_ETHER, TOKEN_TYPE_ERC20, ERC20, ERC20NameBytes, ERC20SymbolBytes } from './constants'
 import { Token } from '../generated/schema'
 
 export function isETH(chain_id: number): boolean {
@@ -31,19 +31,16 @@ export function fetchToken(tokenAddress: Address): Token {
     token = new Token(tokenAddress.toHexString())
   }
   token.type = isNative(tokenAddress.toHex()) ? TOKEN_TYPE_ETHER : TOKEN_TYPE_ERC20
-  token.chain_id = CHAIN_ID
   token.address = tokenAddress
-  token.name = fetchTokenName(tokenAddress, CHAIN_ID)
-  token.symbol = fetchTokenSymbol(tokenAddress, CHAIN_ID)
+  token.name = fetchTokenName(tokenAddress)
+  token.symbol = fetchTokenSymbol(tokenAddress)
   token.decimals = fetchTokenDecimals(tokenAddress)
   return token as Token
 }
 
-export function fetchTokenSymbol(tokenAddress: Address, chainId: number): string {
+export function fetchTokenSymbol(tokenAddress: Address): string {
   if (isNative(tokenAddress.toHexString())) {
-    if (isBSC(chainId)) return 'BNB'
-    else if (isMatic(chainId)) return 'MATIC'
-    else return 'ETH'
+    return 'Native'
   }
 
   let contract = ERC20.bind(tokenAddress)
@@ -67,11 +64,9 @@ export function fetchTokenSymbol(tokenAddress: Address, chainId: number): string
   return symbolValue
 }
 
-export function fetchTokenName(tokenAddress: Address, chainId: number): string {
+export function fetchTokenName(tokenAddress: Address): string {
   if (isNative(tokenAddress.toHexString())) {
-    if (isBSC(chainId)) return 'Binance'
-    else if (isMatic(chainId)) return 'Polygon'
-    else return 'Ether'
+    return 'Native'
   }
 
   let contract = ERC20.bind(tokenAddress)
