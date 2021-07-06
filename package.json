@@ -2,12 +2,12 @@
   "name": "mask-swap-agent-mainnet",
   "license": "MIT",
   "scripts": {
-    "codegen": "graph codegen ./subgraph-mainnet.yaml",
-    "build": "graph build ./subgraph-mainnet.yaml",
-    "codegen-mainnet": "graph codegen ./subgraph-mainnet.yaml",
-    "codegen-bsc-mainnet": "graph codegen ./subgraph-bsc-mainnet.yaml",
-    "build-mainnet": "graph build ./subgraph-mainnet.yaml",
-    "build-bsc-mainnet": "graph build ./subgraph-bsc-mainnet.yaml",
+    "codegen": "graph codegen ./mainnet.yaml",
+    "build": "graph build ./mainnet.yaml",
+    "codegen-mainnet": "graph codegen ./mainnet.yaml",
+    "codegen-bsc-mainnet": "graph codegen ./bsc-mainnet.yaml",
+    "build-mainnet": "graph build ./mainnet.yaml",
+    "build-bsc-mainnet": "graph build ./bsc-mainnet.yaml",
     "deploy-mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-swap-agent-mainnet",
     "deploy-bsc-mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ dimensiondev/mask-swap-agent-bsc-mainnet",
     "format": "prettier --write './**/*.ts'"
