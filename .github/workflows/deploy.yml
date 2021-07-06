@@ -36,12 +36,12 @@ jobs:
           yarn prepare-mainnet
           yarn codegen
           yarn build
-          yarn deploy --access-token ${{ secrets.ACCESS_TOKEN_MAINNET }}
+          yarn deploy-mainnet --access-token ${{ secrets.ACCESS_TOKEN_MAINNET }}
         if: github.ref == 'refs/heads/master'
 
       - run: |
           yarn prepare-bsc-mainnet
           yarn codegen
           yarn build
-          yarn deploy --access-token ${{ secrets.ACCESS_TOKEN_BSC_MAINNET }}
+          yarn deploy-bsc-mainnet --access-token ${{ secrets.ACCESS_TOKEN_BSC_MAINNET }}
         if: github.ref == 'refs/heads/master'
