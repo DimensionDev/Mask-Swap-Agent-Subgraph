@@ -8,18 +8,6 @@ import {
 } from "./constants";
 import { Token } from "../generated/schema";
 
-export function isETH(chain_id: number): boolean {
-  return chain_id == 1;
-}
-
-export function isBSC(chain_id: number): boolean {
-  return chain_id == 56;
-}
-
-export function isMatic(chain_id: number): boolean {
-  return chain_id == 137;
-}
-
 export function isNative(value: string): boolean {
   return value == "0x0000000000000000000000000000000000000000";
 }

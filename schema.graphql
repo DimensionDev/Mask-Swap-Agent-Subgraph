@@ -15,7 +15,7 @@ type Transaction @entity {
   from_token: Token
   to_token: Token
   created_at: BigInt
-  filled_at: BigInt
   created_by: Bytes
+  filled_at: BigInt
   filled_by: Bytes
 }

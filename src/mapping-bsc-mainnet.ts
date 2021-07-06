@@ -13,11 +13,11 @@ export function handleSwapStarted(event: SwapStarted): void {
   // create transaction
   let transaction = Transaction.load(event.transaction.hash.toHexString());
   transaction.amount = event.params.amount;
-  transaction.fee = event.params.feeAmount;
   transaction.address = event.params.fromAddr;
+  transaction.fee = event.params.feeAmount;
   transaction.from_token = token.id;
-  transaction.created_by = event.transaction.hash;
   transaction.created_at = event.block.timestamp;
+  transaction.created_by = event.transaction.hash;
   transaction.save();
 }
 
@@ -31,7 +31,7 @@ export function handleSwapFilled(event: SwapFilled): void {
   transaction.amount = event.params.amount;
   transaction.address = event.params.toAddress;
   transaction.to_token = token.id;
-  transaction.filled_by = event.transaction.hash;
   transaction.filled_at = event.block.timestamp;
+  transaction.filled_by = event.transaction.hash;
   transaction.save();
 }
