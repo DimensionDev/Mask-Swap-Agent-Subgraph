@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0xD25d84B989bFaFC2C77aB1d4FA1a04FC0eea9D24"
       abi: SwapAgent
+      startBlock: 12739229
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -42,6 +43,7 @@ dataSources:
     source:
       address: "0x05ee315E407C21a594f807D61d6CC11306D1F149"
       abi: SwapAgent
+      startBlock: 8764792
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
