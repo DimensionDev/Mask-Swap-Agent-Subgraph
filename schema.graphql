@@ -10,8 +10,12 @@ type Token @entity {
 type Transaction @entity {
   id: ID!
   amount: BigInt!
-  fee: BigInt!
-  timestamp: BigInt!
-  from: Bytes!
-  token: Token!
+  address: Bytes!
+  fee: BigInt
+  from_token: Token
+  to_token: Token
+  created_at: BigInt
+  filled_at: BigInt
+  created_by: Bytes
+  filled_by: Bytes
 }
