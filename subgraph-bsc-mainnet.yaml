@@ -1,0 +1,39 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: SwapAgent
+    network: bsc
+    source:
+      address: "0x05ee315E407C21a594f807D61d6CC11306D1F149"
+      abi: SwapAgent
+      startBlock: 8764792
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - SwapFilled
+        - SwapPairRegister
+        - SwapStarted
+      abis:
+        - name: SwapAgent
+          file: ./abis/SwapAgent.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: ERC20SymbolBytes
+          file: ./abis/ERC20SymbolBytes.json
+        - name: ERC20NameBytes
+          file: ./abis/ERC20NameBytes.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SwapFilled(indexed address,indexed bytes32,indexed address,uint256)
+          handler: handleSwapFilled
+        - event: SwapPairRegister(indexed address,indexed address,string,string,uint8)
+          handler: handleSwapPairRegister
+        - event: SwapStarted(indexed address,indexed address,uint256,uint256)
+          handler: handleSwapStarted
+      file: ./src/mapping.ts

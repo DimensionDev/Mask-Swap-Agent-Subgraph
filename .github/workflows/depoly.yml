@@ -33,13 +33,13 @@ jobs:
       - run: yarn
 
       - run: | 
-          yarn codegen
-          yarn build
-          yarn deploy-thegraph-mainnet --access-token ${{ secrets.ACCESS_TOKEN_MAINNET }}
+          yarn codegen-mainnet
+          yarn build-mainnet
+          yarn deploy-mainnet --access-token ${{ secrets.ACCESS_TOKEN_MAINNET }}
         if: github.ref == 'refs/heads/master'
 
       - run: |
-          yarn codegen
-          yarn build
-          yarn deploy-thegraph-bsc-mainnet --access-token ${{ secrets.ACCESS_TOKEN_BSC_MAINNET }}
+          yarn codegen-bsc-mainnet
+          yarn build-bsc-mainnet
+          yarn deploy-bsc-mainnet --access-token ${{ secrets.ACCESS_TOKEN_BSC_MAINNET }}
         if: github.ref == 'refs/heads/master'
