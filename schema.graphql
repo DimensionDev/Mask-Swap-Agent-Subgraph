@@ -1,0 +1,18 @@
+type Token @entity {
+  id: ID!
+  type: Int! # 0 - Ether, 1 - ERC20
+  address: Bytes!
+  name: String
+  symbol: String
+  decimals: Int!
+  chain_id: Int!
+}
+
+type Transaction @entity {
+  id: ID!
+  amount: BigInt!
+  fee: BigInt!
+  timestamp: BigInt!
+  from: Bytes!
+  token: Token!
+}
